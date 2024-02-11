@@ -4,37 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device=width, initial-scale=1.0">
     <title>Tourist Guide</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        nav {
-            margin-bottom: 20px;
-        }
-
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-        }
-
-        .attractions-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        footer {
-            margin-top: 50px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -44,9 +14,9 @@
 </header>
 
 <nav>
-    <a href="http://localhost:8080">Home</a>
-    <a href="http://localhost:8080/attractions">All Attractions</a>
-    <a href="http://localhost:8080/attractions/delete/Attraction1">Delete Attraction</a>
+    <a href="#">Home</a>
+    <a href="/attractions">All Attractions</a>
+    <a href="/attractions/delete/{name}">Delete Attraction</a>
 </nav>
 
 <section>
@@ -61,9 +31,9 @@
 <section>
     <h2>Selected Attractions</h2>
     <ul class="attractions-list">
-        <li><a href="http://localhost:8080/attractions/The Demon">The Demon</a></li>
-        <li><a href="http://localhost:8080/attractions/The Golden Tower">The Golden Tower</a></li>
-        <li><a href="http://localhost:8080/attractions/The Star Flyer">The Star Flyer</a></li>
+        <li><a href="/attractions/The Demon">The Demon</a></li>
+        <li><a href="/attractions/The Golden Tower">The Golden Tower</a></li>
+        <li><a href="/attractions/The Star Flyer">The Star Flyer</a></li>
     </ul>
 </section>
 
