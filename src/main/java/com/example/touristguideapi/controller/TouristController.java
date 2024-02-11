@@ -38,20 +38,27 @@ public class TouristController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addAttraction(@RequestBody TouristAttraction touristAttraction) {
+    public ResponseEntity<String> addAttraction(@RequestBody TouristAttraction touristAttraction) {
         touristService.addTouristAttraction(touristAttraction);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("Attraction has been added!" , HttpStatus.CREATED);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Void> updateAttraction(@RequestParam String name, @RequestBody TouristAttraction updatedAttraction) {
+    public ResponseEntity<String> updateAttraction(@RequestParam String name, @RequestBody TouristAttraction updatedAttraction) {
+        if (touristService.getTouristAttractionByName(name) == null) {
+            return new ResponseEntity<>(name + " could not be found" , HttpStatus.NOT_FOUND);
+        }
         touristService.updateTouristAttraction(name, updatedAttraction);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(name + " has been updated" , HttpStatus.OK);
     }
 
     @GetMapping("/delete/{name}")
-    public ResponseEntity<Void> deleteAttraction(@PathVariable String name) {
+    public ResponseEntity<String> deleteAttraction(@PathVariable String name) {
+        if (touristService.getTouristAttractionByName(name) == null) {
+            return new ResponseEntity<>(name + " could not be found" , HttpStatus.NOT_FOUND);
+        }
         touristService.deleteTouristAttraction(name);
-        return new ResponseEntity<>(HttpStatus.OK);
+        touristService.getAllTouristAttractions().forEach(System.out::println);
+        return new ResponseEntity<>(name + " has been deleted" , HttpStatus.OK);
     }
 }
